@@ -64,7 +64,23 @@ avtidy %>% filter(time == 1, death == "YES") %>%
 ```
 As we can see 44/63 Avengers returned from their first death. This turns out to be 69.84% of Avengers returned from their first death, which is close to the stated 66.67%. Thus the statement is verified. 
 
- 
+Check Statement that there is a 50% chance they recovered from a second or third death.
+
+```{r}
+avtidy %>% filter(time == 2, death == "YES") %>% 
+  summarise(total = n(),
+            return = sum(return == "YES"), 
+            noreturn = sum(return == "NO"), 
+            missing = sum(return == ""))
+
+avtidy %>% filter(time == 3, death == "YES") %>% 
+  summarise(total = n(),
+            return = sum(return == "YES"), 
+            noreturn = sum(return == "NO"), 
+            missing = sum(return == ""))
+```
+
+For the second death, 8/15 or 53.33% of the Avengers returned. For the third death, 1/2 or 50% of the Avengers returned. Therefore the statement that there is a 50% chance they recovered from a second or third death is verified.
 
 
 
